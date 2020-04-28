@@ -18,6 +18,7 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 // Temporal
 
 import { IncrementerComponent } from '../components/incrementer/incrementer.component';
+import { GraficoDonaComponent } from '../components/graficoDona/graficoDona.component';
 
 
 
@@ -27,7 +28,8 @@ import { IncrementerComponent } from '../components/incrementer/incrementer.comp
         DashboardComponent,
         ProgressComponent,
         Graficas1Component,
-        IncrementerComponent
+        IncrementerComponent,
+        GraficoDonaComponent
     ],
     exports: [
         PagesComponent,
