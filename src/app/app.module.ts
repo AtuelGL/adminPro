@@ -8,12 +8,14 @@ import { APP_ROUTES } from './app.routes';
 // Modulos
 import { PagesModule } from './pages/pages.module';
 
+// Temporal
+import { FormsModule } from '@angular/forms';
 
-// COmponentes
+// Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
-import { IncrementerComponent } from './components/incrementer/incrementer.component';
+
 
 
 
@@ -22,12 +24,12 @@ import { IncrementerComponent } from './components/incrementer/incrementer.compo
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    IncrementerComponent,
   ],
   imports: [
     BrowserModule,
     PagesModule,
-    APP_ROUTES
+    APP_ROUTES,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

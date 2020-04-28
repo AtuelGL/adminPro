@@ -6,11 +6,11 @@
                 <h4 class="card-title"> Barra de progreso </h4>
 
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariavaluenow]="percent" aria-valuemin="0" aria-valuemax="100" [style.width]="percent + '%'"></div>
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariavaluenow]="percent1" aria-valuemin="0" aria-valuemax="100" [style.width]="percent1 + '%'"></div>
                 </div>
                 <br>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariavaluenow]="percent" aria-valuemin="0" aria-valuemax="100" [style.width]="percent + '%'"></div>
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariavaluenow]="percent2" aria-valuemin="0" aria-valuemax="100" [style.width]="percent2 + '%'"></div>
                 </div>
 
             </div>
@@ -23,19 +23,7 @@
         <div class="card">
             <div class="card-body">
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend" id="button-addon3">
-                        <button class="btn btn-primary" type="button" (click)="changeValue(-5)">
-                            <i class="mdi mdi-minus"></i>
-                        </button>
-                    </div>
-                    <input type="text" class="form-control" aria-describedby="button-addon3" name="percent" [(ngModel)]="percent">
-                    <div class="input-group-prepend" id="button-addon3">
-                        <button class="btn btn-primary" type="button" (click)="changeValue(+5)">
-                            <i class="mdi mdi-plus"></i>
-                        </button>
-                    </div>
-                </div>
+                <app-incrementer (changedValue)="percent1 = $event" legend="Progress Blue" [percent]="percent1"></app-incrementer>
 
             </div>
         </div>
@@ -46,7 +34,7 @@
         <div class="card">
             <div class="card-body">
 
-
+                <app-incrementer (changedValue)="percent2 = $event" legend="Progress Green" [percent]="percent2"></app-incrementer>
 
             </div>
         </div>
