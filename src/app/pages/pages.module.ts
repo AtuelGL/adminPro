@@ -19,6 +19,7 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 
 import { IncrementerComponent } from '../components/incrementer/incrementer.component';
 import { GraficoDonaComponent } from '../components/graficoDona/graficoDona.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 
@@ -29,7 +30,8 @@ import { GraficoDonaComponent } from '../components/graficoDona/graficoDona.comp
         ProgressComponent,
         Graficas1Component,
         IncrementerComponent,
-        GraficoDonaComponent
+        GraficoDonaComponent,
+        AccountSettingsComponent
     ],
     exports: [
         PagesComponent,
