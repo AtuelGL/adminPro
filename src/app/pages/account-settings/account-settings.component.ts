@@ -1,5 +1,6 @@
-import { Component, OnInit, Inject, ElementRef } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { SettingsService } from 'src/app/services/service.index';
 
 @Component({
   selector: 'app-account-settings',
@@ -9,16 +10,16 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  constructor( @Inject(DOCUMENT) private _document ) { }
-
+/* tslint:disable: variable-name */
+  constructor( public _setting: SettingsService ) { }
+/* tslint:enable */
   ngOnInit(): void {
+    this.persistCheck();
   }
 
-  changeStyle( style: string, link: any ) {
-    
+  changeStyle( theme: string, link: any ) {
     this.applyCheck(link);
-    const url = `assets/css/colors/${style}.css`;
-    this._document.getElementById('theme').setAttribute('href', url );
+    this._setting.applyTheme(theme);
   }
 
   applyCheck(link: any) {
@@ -27,6 +28,16 @@ export class AccountSettingsComponent implements OnInit {
       ref.classList.remove('working');
     }
     link.classList.add('working');
+  }
+
+  persistCheck(){
+    const selectors: any = document.getElementsByClassName('selector');
+    const theme = this._setting.setting.theme;
+    for ( const ref of selectors ) {
+      if ( ref.getAttribute('data-theme') === theme ){
+        ref.classList.add('working');
+      }
+    }
   }
 
 }
