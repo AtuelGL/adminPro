@@ -20,6 +20,8 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { IncrementerComponent } from '../components/incrementer/incrementer.component';
 import { GraficoDonaComponent } from '../components/graficoDona/graficoDona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -31,7 +33,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         Graficas1Component,
         IncrementerComponent,
         GraficoDonaComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        PromisesComponent,
+        RxjsComponent
     ],
     exports: [
         PagesComponent,
