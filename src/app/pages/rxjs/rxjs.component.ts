@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, observable } from 'rxjs';
-import { retry } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, observable, Subscriber, Subscription } from 'rxjs';
+import { retry, map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',
@@ -8,37 +8,54 @@ import { retry } from 'rxjs/operators';
   styles: [
   ]
 })
-export class RxjsComponent implements OnInit {
+export class RxjsComponent implements OnInit, OnDestroy {
 
+  subscription: Subscription;
   constructor() {
-    const obs = new Observable( observer => {
-      let cont = 0;
-      let interv = setInterval(() => {
-        cont += 1;
-        observer.next(cont);
-        observer.error('Auxilio!');
-        if ( cont === 3 ){
-          clearInterval(interv);
-          observer.complete();
-        }
-        if ( cont === 2 ){
-          observer.error('Auxilio!');
-        }
-      }, 1000 );
-    });
-
-    obs.pipe(
-        retry()
-    )
+    this.subscription = this.returnObs()
     .subscribe(
-      numb => console.log('Subs', numb ),
-      err => console.error('error in observer', err),
-      () => console.log('observer end')
-    );
-
+    numb => console.log('Subs', numb ),
+    err => console.error('error in observer', err),
+    () => console.log('observer end')
+  );
   }
 
   ngOnInit(): void {
   }
 
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
+
+  returnObs(): Observable<any> {
+    return new Observable( (observer: Subscriber<any>) => {
+      let cont = 0;
+      const interv = setInterval(() => {
+        cont ++;
+        const exit = {
+          value: cont
+        };
+        observer.next(exit);
+        // if ( cont === 3 ){
+        //   clearInterval(interv);
+        //   observer.complete();
+        // }
+        // if ( cont === 2 ){
+        //   // clearInterval(interv);
+        //   observer.error('Error!');
+        // }
+      }, 1000 );
+
+    }).pipe(
+      map ( resp => resp.value ),
+      filter( ( resp, index) => {
+        if ( (resp % 2) === 1 ){
+          return true;
+        } else{
+          return false;
+        }
+      })
+    );
+  }
 }
