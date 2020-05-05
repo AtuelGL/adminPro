@@ -5,6 +5,8 @@ import { SharedModule } from '../shared/shared.module';
 
 import { FormsModule } from '@angular/forms';
 
+import { CommonModule } from '@angular/common';
+
 // ng2 CHarts
 import { ChartsModule } from 'ng2-charts';
 
@@ -15,6 +17,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 
+// Pipe module
+import { PipesModule } from '../pipes/pipes.module';
+
 // Temporal
 
 import { IncrementerComponent } from '../components/incrementer/incrementer.component';
@@ -22,6 +27,9 @@ import { GraficoDonaComponent } from '../components/graficoDona/graficoDona.comp
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
+
+
 
 
 
@@ -35,7 +43,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         GraficoDonaComponent,
         AccountSettingsComponent,
         PromisesComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     exports: [
         PagesComponent,
@@ -47,7 +56,9 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
-        ChartsModule
+        ChartsModule,
+        PipesModule,
+        CommonModule
     ]
 })
 export class PagesModule {}

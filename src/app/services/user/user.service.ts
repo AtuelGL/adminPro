@@ -6,6 +6,7 @@ import { URL_SERVICES } from '../../config/config';
 import { map } from 'rxjs/operators';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
+import { UploadFileService } from '../upload-file/upload-file.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,19 +18,20 @@ export class UserService {
 
   constructor(
     public http: HttpClient,
-    public router: Router
+    public router: Router,
+    public _uploadFileService: UploadFileService
     ) {
     this.loadStorage();
    }
 
-   logOut(){
+  logOut(){
     this.user = null;
     this.token = '';
     localStorage.removeItem('token');
     localStorage.removeItem('user');
 
     this.router.navigate(['/login']);
-   }
+  }
 
   isLogin(){
     return (this.token.length > 5) ? true : false;
@@ -62,8 +64,6 @@ export class UserService {
     }));
   }
 
-
-
   login(user: User, rememberMe: boolean){
     if (rememberMe){
       localStorage.setItem('email', user.email);
@@ -85,5 +85,29 @@ export class UserService {
       swal('Usuario creado', user.email, 'success');
       return resp.user;
   }));
+  }
+
+  updateUser(user: User){
+  let url = URL_SERVICES + '/user/' + user._id;
+  url += '?token=' + this.token;
+  return this.http.put(url, user)
+    .pipe(map((resp: any) => {
+      this.saveStorage(resp.user._id, this.token, resp.user);
+      swal('Usuario actualizado', user.name, 'success');
+      return true;
+  }));
+  }
+
+  changeImage(file: File, id: string){
+   this._uploadFileService.uploadFile(file, 'users', id)
+   .then((resp: any) => {
+    console.log(resp);
+    this.user.img = resp.user.img;
+    swal('Imagen actualizada', this.user.name, 'success');
+    this.saveStorage(id, this.token, this.user);
+   })
+   .catch(resp=>{
+    console.error(resp);
+   })
   }
 }
