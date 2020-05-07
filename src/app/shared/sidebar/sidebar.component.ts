@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
 
   user: User;
 /* tslint:disable: variable-name */
-  constructor( 
+  constructor(
     public _sidebar: SidebarService,
     public _userService: UserService
     ) { }

@@ -8,6 +8,7 @@ import { SettingsService,
          UploadFileService
         } from './service.index';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
 
 
 
@@ -18,7 +19,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SharedService,
     UserService,
     LoginGuardGuard,
-    UploadFileService
+    UploadFileService,
+    ModalUploadService
   ],
   declarations: [],
   imports: [
