@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
 
-                <input #input (keyup)="searchHospital(input.value)" type="text" class="form-control" placeholder="Search Hospital">
+                <input #input (keyup)="searchMedic(input.value)" type="text" class="form-control" placeholder="Search Medic">
 
             </div>
         </div>
@@ -22,46 +22,57 @@
     </div>
 </div>
 
-<div class="row animated fadeIn" *ngIf="!loading">
+
+<div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
 
-                <h3 class="card-title">Registered Hospitals (<small>{{ totalReg }}</small>)
+                <h3 class="card-title">Registered Medics (<small>{{ totalReg }}</small>)
                 </h3>
+
                 <div class="text-right">
-                    <button (click)="createHospital()" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                    <button [routerLink]="['/medic','new']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
                     <i class="fa fa-plus"></i> 
-                    Crear hospital
+                    Crear Medico
                     </button>
                 </div>
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Image</th>
+                            <th>Medic</th>
                             <th>Hospital</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let hospital of hospitals">
+                        <tr *ngFor="let medic of medics">
                             <td class="w70">
-                                <img (click)="updateImg(hospital._id)" [src]="hospital.img | image: 'hospital'" class="img50 img-circle pointer">
+                                <img [src]="medic.img | image: 'medic'" class="img50 img-circle pointer">
                             </td>
                             <td>
-                                <input [(ngModel)]="hospital.name" name="name" type="text" class="form-control" placeholder="{{hospital.name}}" required>
+                                {{medic.name}}
                             </td>
                             <td>
-                                <button (click)="saveHospital(hospital)" class="btn btn-primary">
-                                    <i class="fa fa-save"></i>
+                                {{medic.hospital.name}}
+                            </td>
+                            <td>
+                                <button [routerLink]="['/medic',medic._id]" class="btn btn-dark">
+                                    <i class="fa fa-edit"></i>
                                 </button>
-                                <button (click)="deleteHospital(hospital)" class="btn btn-danger">
+                                <button (click)="deleteMedic(medic)" class="btn btn-danger">
                                     <i class="fa fa-trash-o"></i>
                                 </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+
+
+
+
             </div>
         </div>
     </div>

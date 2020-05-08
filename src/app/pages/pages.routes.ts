@@ -11,6 +11,8 @@ import { LoginGuardGuard } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
 import { HospitalsComponent } from './hospitals/hospitals.component';
+import { MedicComponent } from './medics/medic.component';
+import { MedicsComponent } from './medics/medics.component';
 
 
 
@@ -30,6 +32,8 @@ const pagesRoutes: Routes = [
         // Mantenimientos
         { path: 'users' , component: UsersComponent, data: { title: 'Users Management' } },
         { path: 'hospitals' , component: HospitalsComponent, data: { title: 'Hospitals Management' } },
+        { path: 'medics' , component: MedicsComponent, data: { title: 'Medics Management' } },
+        { path: 'medic/:id' , component: MedicComponent, data: { title: 'Update Medic' } },
         { path: '' , redirectTo: '/dashboard', pathMatch: 'full'},
         ]
     }
