@@ -48,13 +48,13 @@ export class RegisterComponent implements OnInit {
     }, {validators: this.areIqual('passwd','passwd2') });
 
 
-    this.form.setValue({
-      name: 'Test ',
-      email: 'test@TestBed.com',
-      passwd: '123456',
-      passwd2: '123456',
-      conditions: true
-      });
+    // this.form.setValue({
+    //   name: 'Test ',
+    //   email: 'test@TestBed.com',
+    //   passwd: '123456',
+    //   passwd2: '123456',
+    //   conditions: true
+    //   });
 
 
   }

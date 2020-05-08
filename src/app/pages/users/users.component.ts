@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
     .subscribe(resp => this.getUsers());
   }
 
-  mostrarModal(id: string){
+  viewModal(id: string){
     this._modalUploadService.visibleModal('users', id);
   }
 

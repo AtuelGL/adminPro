@@ -20,6 +20,7 @@ export class ModalUploadComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   selectImage(file: File){

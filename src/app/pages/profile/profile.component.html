@@ -31,7 +31,7 @@
                 <h4 class="card-title">Fotografía del usuario</h4>
                 <h6 class="card-subtitle">Nombre del Usuario</h6>
 
-                <img *ngIf="!tempImg" [src]="'xxx' | image" class="w150">
+                <img *ngIf="!tempImg" [src]="'xxx' | image: 'user'" class="w150">
                 <img *ngIf="tempImg" [src]="tempImg" class="w150">
                 <br>
                 <br>
