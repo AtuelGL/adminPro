@@ -19,6 +19,7 @@ export class SidebarComponent implements OnInit {
 /* tslint:enable */
   ngOnInit(): void {
     this.user = this._userService.user;
+    this._sidebar.loadMenu();
   }
 
 }

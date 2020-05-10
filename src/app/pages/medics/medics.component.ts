@@ -25,16 +25,12 @@ export class MedicsComponent implements OnInit {
     this.getMedic();
   }
 
-  // updateImg(id: string){
-  //   this._modalUploadService.visibleModal('hospitals', id);
-  // }
-
   getMedic(){
     this.loading = true;
     this._medicService.getMedics()
-    .subscribe(hospitals => {
+    .subscribe(medics => {
       this.totalReg = this._medicService.totalMedics;
-      this.medics = hospitals;
+      this.medics = medics;
       this.loading = false;
     });
   }
@@ -69,25 +65,4 @@ export class MedicsComponent implements OnInit {
       }
     });
   }
-
-  // saveHospital(hospital: Hospital){
-  //   this._hospitalService.updateHospital(hospital)
-  //   .subscribe();
-  // }
-
-  // createMedic(){
-  //   swal({
-  //     title: "Nuevo Hospital",
-  //     text: "Ingrese nombre:",
-  //     content: "input",
-  //     buttons: true
-  //   }).then((inputValue) => {
-  //     if (inputValue === false) return false;
-  //     if (inputValue === "" || inputValue.length === 0) {
-  //       swal.showInputError("Es necesario un nombre");
-  //       return false
-  //     }
-  //     this._hospitalService.createHospital(inputValue)
-  //     .subscribe(() => this.getHospitals());
-  //   });
 }

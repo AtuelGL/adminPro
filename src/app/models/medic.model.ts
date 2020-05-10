@@ -4,7 +4,7 @@ export class Medic {
         public name?: string,
         public img?: string,
         public user?: string,
-        public hospital?: string,
+        public hospital?: string | any,
         public _id?: string
     ) { }
 }
