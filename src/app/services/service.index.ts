@@ -9,6 +9,8 @@ export { UploadFileService } from './upload-file/upload-file.service';
 // GUARDS
 export { AdminGuard } from './guards/admin.guard';
 export { LoginGuardGuard } from './guards/login-guard.guard';
+export { VerifytokenGuard } from './guards/verifytoken.guard';
+
 
 // Settings
 export { SettingsService } from './settings/settings.service';

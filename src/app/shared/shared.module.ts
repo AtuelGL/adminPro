@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 // Pipe module
 import { PipesModule } from '../pipes/pipes.module';
 
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+
 
 
 @NgModule ({
@@ -21,13 +23,15 @@ import { PipesModule } from '../pipes/pipes.module';
         HeaderComponent,
         SidebarComponent,
         BreadcrumsComponent,
-        PagenotfoundComponent
+        PagenotfoundComponent,
+        ModalUploadComponent
     ],
     exports: [
         HeaderComponent,
         SidebarComponent,
         BreadcrumsComponent,
-        PagenotfoundComponent
+        PagenotfoundComponent,
+        ModalUploadComponent
     ]
 
 })
